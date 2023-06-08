@@ -55,8 +55,8 @@ for basin_name, station in basin_station_map.items():
 
     print(f"Processing basin: {basin_name}")
     
-    start_date = '03/01/2015'  # Replace with the desired start date 'MM/DD/YYYY'
-    end_date = '03/31/2015'    # Replace with teh desired end date 'MM/DD/YYYY'
+    start_date = '01/01/2016'  # Replace with the desired start date 'MM/DD/YYYY'
+    end_date = '01/02/2016'    # Replace with teh desired end date 'MM/DD/YYYY'
 
     # Filter the precipitation data based on user input
     precip_df = precip_df[(precip_df['date'] >= start_date) & (precip_df['date'] <= end_date) & (precip_df[station] > 0)][['date', station]]
@@ -74,7 +74,7 @@ for basin_name, station in basin_station_map.items():
             else:
                 Pnet = -0.02 + 0.98 * (P*12) - 0.09 * LAI
         
-        return min(Pnet, P*12)
+        return min(Pnet, P)
 
     # Vectorize the Pnet calculation function
     calculate_pnet_vec = np.vectorize(calculate_pnet)
